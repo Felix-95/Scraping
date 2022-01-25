@@ -20,7 +20,9 @@ def scrape_wikitionary(url, headless_browser=True, only_with_entry=False):
     browser_options = Options()
     if headless_browser:
         browser_options.headless = True
-    directory_of_file = os.path.normpath(sys.argv[0] + os.sep + os.pardir)
+
+    # directory_of_file = os.path.normpath(sys.argv[0] + os.sep + os.pardir)
+    directory_of_file = os.getcwd()
     browser_path = directory_of_file + "/geckodriver"
     browser = Firefox(executable_path=browser_path, options=browser_options)
     browser.implicitly_wait(5)
