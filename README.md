@@ -1,0 +1,1 @@
+scrape_wikitionary will return a list of on the terms given on the site
