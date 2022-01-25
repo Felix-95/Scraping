@@ -1,10 +1,11 @@
 from selenium.webdriver import Firefox
 from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.firefox.options import Options
-import os, sys
+import os
+import sys
 
 
-def scrape_wikitionary(url, headless_browser = True, only_with_entry = False):
+def scrape_wikitionary(url, headless_browser=True, only_with_entry=False):
     """scrape_wikitionary will return a list of on the terms given on the site
 
     Args:
@@ -30,7 +31,8 @@ def scrape_wikitionary(url, headless_browser = True, only_with_entry = False):
     term_list = []
 
     # get list of paragraph elements
-    main_content_element = browser.find_element_by_class_name("mw-parser-output")
+    main_content_element = browser.find_element_by_class_name(
+        "mw-parser-output")
 
     # start parsing at second element because fist one is overview
     for paragraph in main_content_element.find_elements_by_tag_name("ul")[1:]:
@@ -50,9 +52,10 @@ def scrape_wikitionary(url, headless_browser = True, only_with_entry = False):
 
     return term_list
 
+
 if __name__ == "__main__":
     gruß_url = "https://de.wiktionary.org/wiki/Verzeichnis:Deutsch/Gr%C3%BC%C3%9Fen/Begr%C3%BC%C3%9Fungsformeln"
     abschied_url = "https://de.wiktionary.org/wiki/Verzeichnis:Deutsch/Gr%C3%BC%C3%9Fen/Abschied"
     falschschreibungen_url = "https://de.wiktionary.org/wiki/Verzeichnis:Deutsch/Falschschreibungen"
     feiertage_url = "https://de.wiktionary.org/wiki/Verzeichnis:Deutsch/Gr%C3%BC%C3%9Fen/Feste_und_Feiertage"
-    print(scrape_wikitionary(gruß_url, headless_browser=False, only_with_entry=True))
+    print(scrape_wikitionary(gruß_url, headless_browser=True, only_with_entry=False))
